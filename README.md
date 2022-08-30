@@ -2,7 +2,7 @@
 Api Annuaire.
 > Projet d'Annuaire inversé.
 
-## Astro Back-End
+## Annuaire Back-End
 ![NodeJs](https://img.shields.io/badge/NodeJs-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-EEEEEE?style=for-the-badge&logo=express&logoColor=black)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
@@ -34,4 +34,12 @@ npm run dev
 _Exécute le serveur de l'api en mode développement. (nodemon)_
 
 ### Requêtes disponibles
-> In progress...
+Pour récuperer un contact selon son id.
+
+> **GET** [http://localhost:8080/api/contacts?id=:id](http://localhost:8080/api/contacts?id=:id)\
+_Remplacer :id par l'identifiant du contact._
+
+Pour rechercher un contact selon son nom / numéro de téléphone.
+
+> **GET** [http://localhost:8080/api/contacts?search=:data](http://localhost:8080/api/contacts?search=:data)\
+_Remplacer :data par le nom / numéro d'un contact._
