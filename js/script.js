@@ -10,6 +10,7 @@ function initPage() {
     myInputSearch.setAttribute("type", "text");
     myInputSearch.setAttribute("id", "Search");
     myInputSearch.setAttribute("name", "search");
+    myInputSearch.setAttribute("aria-label", "search");
     myInputSearch.setAttribute("placeholder", "Nom / N° de téléphone");
     myInputSearch.setAttribute("onkeyup", "onChange(this)");
     mainTag.appendChild(myInputSearch);
@@ -110,6 +111,7 @@ function setAddContact() {
     // Input Name
     let myInputName = document.createElement("input");
     myInputName.setAttribute("id", "name");
+    myInputName.setAttribute("aria-label", "name");
     myInputName.setAttribute("placeholder", "Nom");
 
     // Label Phone
@@ -119,6 +121,7 @@ function setAddContact() {
     // Input Phone
     let myInputPhone = document.createElement("input");
     myInputPhone.setAttribute("id", "phone");
+    myInputPhone.setAttribute("aria-label", "phone");
     myInputPhone.setAttribute("placeholder", "N° de téléphone");
 
     // Button Add
@@ -144,7 +147,7 @@ function setAddContact() {
     mainTag.appendChild(myForm);
 }
 
-// Verifie si la valeur.
+// Verifie la valeur de la recherche.
 function checkSearch(value) {
     let test = value.match(/[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]/g);
 
