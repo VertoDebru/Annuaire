@@ -43,3 +43,16 @@ Pour rechercher un contact selon son nom / numéro de téléphone.
 
 > **GET** [http://localhost:8080/api/contacts?search=:data](http://localhost:8080/api/contacts?search=:data)\
 _Remplacer :data par le nom / numéro d'un contact._
+
+
+## Annuaire Front-End
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![javascript](https://img.shields.io/badge/Javascript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+### Installation
+Dans le répertoire `js`, modifier la variable `urlApi` dans le fichier `script.js`.
+
+```javascript
+const urlApi = "http://127.0.0.1:8080/api/contacts";
+```
+_Remplacer `http://127.0.0.1:8080/` par votre url et votre port défini dans le fichier `.env` situé dans le répertoire `back`._
