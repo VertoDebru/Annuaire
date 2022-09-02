@@ -5,7 +5,7 @@ initPage();
 
 // Initialisation de la page.
 function initPage() {
-    // Insertion du champs recherche.
+    // Mise en place du champs recherche.
     let myInputSearch = document.createElement("input");
     myInputSearch.setAttribute("type", "text");
     myInputSearch.setAttribute("id", "Search");
@@ -113,6 +113,7 @@ function setAddContact() {
     myInputName.setAttribute("id", "name");
     myInputName.setAttribute("aria-label", "name");
     myInputName.setAttribute("placeholder", "Nom");
+    myInputName.setAttribute("required", "");
 
     // Label Phone
     let myLabelPhone = document.createElement("label");
@@ -121,11 +122,13 @@ function setAddContact() {
     // Input Phone
     let myInputPhone = document.createElement("input");
     myInputPhone.setAttribute("id", "phone");
+    myInputPhone.setAttribute("type", "number");
     myInputPhone.setAttribute("aria-label", "phone");
     myInputPhone.setAttribute("placeholder", "N° de téléphone");
+    myInputPhone.setAttribute("required", "");
 
     // Button Add
-    let myAddButton = document.createElement("button");
+    let myAddButton = document.createElement("input");
     myAddButton.setAttribute("aria-label", "addContact");
     myAddButton.setAttribute("type", "submit");
     myAddButton.innerText = "Ajouter le contact";
