@@ -1,4 +1,4 @@
-const DB_Contacts = require('../models/Contacts');
+const Contacts = require('../models/Contacts');
 
 // Rechercher un contact.
 exports.getContact = (req, res) => {
@@ -12,7 +12,7 @@ exports.getContact = (req, res) => {
         if(checkSearch) isLetter = true;
         
         if(!isLetter) {
-            DB_Contacts.find({phone: {$gt:contactSearch}})
+            Contacts.find({phone: new RegExp('.*' + contactSearch + '.*')})
             .then( (result) => {
                 if(!result || result.length === 0) return res.status(204).json('No results!');
 
@@ -25,7 +25,7 @@ exports.getContact = (req, res) => {
             });
         }
         else {
-            DB_Contacts.find({name: new RegExp('.*' + contactSearch + '.*')})
+            Contacts.find({name: new RegExp('.*' + contactSearch + '.*')})
             .then( (result) => {
                 if(!result || result.length === 0) return res.status(204).json('No results!');
 
@@ -43,7 +43,7 @@ exports.getContact = (req, res) => {
         if(!contactId) return res.status(500).json('Params ID undefined!');
         console.log("[INFO] New 'GET' request ...");
 
-        DB_Contacts.findOne({ _id: contactId}).then( (result) => {
+        Contacts.findOne({ _id: contactId}).then( (result) => {
             if(!result) return res.status(204).json('No results!');
 
             console.log("[SUCCESS] Contact found!");
@@ -57,10 +57,15 @@ exports.getContact = (req, res) => {
 
 // Ajouter un contact.
 exports.postContact = (req, res) => {
-    let name = req.body.name;
-    let phone = req.body.phone;
+    let contactObj = req.body;
     console.log("[INFO] New 'POST' request ...");
-
-    console.log("[SUCCESS] Contact added!");
-    return res.status(200).json('OK');
+    const contact = new Contacts({...contactObj});
+    contact.save().then(() => {
+        res.status(201).json({ message: 'Contact enregistré !'});
+        console.log("[SUCCESS] Contact added!");
+    })
+    .catch(error => {
+        res.status(400).json({ error });
+        console.log("[ERROR] "+error);
+    });
 };
